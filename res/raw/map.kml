@@ -1,0 +1,13 @@
+<?xml version='1.0' encoding='UTF-8'?>
+<kml xmlns='http://www.opengis.net/kml/2.2'>
+	<Document>
+		<name>asdf</name>
+		<description><![CDATA[]]></description>
+		<NetworkLink>
+			<name>asdf</name>
+			<Link>
+				<href>http://www.google.com/maps/d/kml?forcekml=1&amp;mid=zDQbJ1wumORA.k2yq_ln-iITQ</href>
+			</Link>
+		</NetworkLink>
+	</Document>
+</kml>

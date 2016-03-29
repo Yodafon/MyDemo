@@ -1,6 +1,8 @@
 package com.example.MyDemo;
 
 import android.app.Activity;
+import android.app.ExpandableListActivity;
+import android.app.ListActivity;
 import android.content.Context;
 import android.graphics.Point;
 import android.graphics.drawable.BitmapDrawable;
@@ -10,26 +12,50 @@ import android.view.LayoutInflater;
 import android.view.View;
 import android.widget.*;
 
+import java.util.ArrayList;
+import java.util.HashMap;
+import java.util.List;
+
 /**
  * Created by Laci on 2016.03.29..
  */
-public class Contacts extends Activity {
+public class Contacts extends ListActivity {
+
+    List<Contact> listDataHeader;
+
+
+
+
+
     @Override
     public void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.contacts);
+        setContentView(R.id.list);
 
+    prepareListData();
+    MyExpandableListAdapter listAdapter = new MyExpandableListAdapter(this, R.layout.list_item, listDataHeader);
+    setListAdapter(listAdapter);
+}
 
-        ExpandableListView expandableListView= (ExpandableListView) findViewById(R.id.expandableListView);
-        expandableListView.addView();
-        expandableListView.setOnItemClickListener(new AdapterView.OnItemClickListener() {
-            @Override
-            public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
+    /*
+     * Preparing the list data
+     */
+    private void prepareListData() {
+        listDataHeader = new ArrayList<Contact>();
+        listDataHeader.add(new Contact("A","A21","232332"));
+        listDataHeader.add(new Contact("B","B4","fdsfa"));
 
-            }
-        });
-
+}
+    @Override
+    protected void onListItemClick(ListView l, View v, int position, long id) {
+        Contact item = (Contact) getListAdapter().getItem(position);
+       showPopup(Contacts.this,new Point(355,288));
     }
+
+
+
+
+
 
     // The method that displays the popup.
     private void showPopup(final Activity context, Point p) {
